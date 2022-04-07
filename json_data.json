@@ -1,5 +1,6 @@
-{
-    "1200px-DSC_4623_(48105257002).jpg": {
+[
+    {
+        "path": "1200px-DSC_4623_(48105257002).jpg",
         "Id": 1,
         "Category": "airplane",
         "Color": "silver",
@@ -8,7 +9,8 @@
             800
         ]
     },
-    "1200px-N360PZ_(40499790530).jpg": {
+    {
+        "path": "1200px-N360PZ_(40499790530).jpg",
         "Id": 2,
         "Category": "airplane",
         "Color": "darkslategray",
@@ -17,7 +19,8 @@
             533
         ]
     },
-    "Royal_International_Air_Tattoo.jpg": {
+    {
+        "path": "Royal_International_Air_Tattoo.jpg",
         "Id": 4,
         "Category": "airplane",
         "Color": "white",
@@ -26,7 +29,8 @@
             800
         ]
     },
-    "RG-7_Soim_(1958).jpg": {
+    {
+        "path": "RG-7_Soim_(1958).jpg",
         "Id": 5,
         "Category": "airplane",
         "Color": "gainsboro",
@@ -35,7 +39,8 @@
             527
         ]
     },
-    "Boeing_737-33A_Fischer_Air_AN0989291.jpg": {
+    {
+        "path": "Boeing_737-33A_Fischer_Air_AN0989291.jpg",
         "Id": 6,
         "Category": "airplane",
         "Color": "silver",
@@ -44,7 +49,8 @@
             800
         ]
     },
-    "HP.81_Hermes_4_G-ALDT_Air_Safaris_Ringway_12.08.61_edited-3.jpg": {
+    {
+        "path": "HP.81_Hermes_4_G-ALDT_Air_Safaris_Ringway_12.08.61_edited-3.jpg",
         "Id": 7,
         "Category": "airplane",
         "Color": "lightslategray",
@@ -53,7 +59,8 @@
             546
         ]
     },
-    "IndioCat.jpg": {
+    {
+        "path": "IndioCat.jpg",
         "Id": 8,
         "Category": "cat",
         "Color": "black",
@@ -62,7 +69,8 @@
             682
         ]
     },
-    "Socks_the_Cat_Explores.jpg": {
+    {
+        "path": "Socks_the_Cat_Explores.jpg",
         "Id": 9,
         "Category": "cat",
         "Color": "darkslategray",
@@ -71,7 +79,8 @@
             795
         ]
     },
-    "NoraPianoCat.jpg": {
+    {
+        "path": "NoraPianoCat.jpg",
         "Id": 10,
         "Category": "cat",
         "Color": "black",
@@ -80,7 +89,8 @@
             204
         ]
     },
-    "Sockington_from_above.jpg": {
+    {
+        "path": "Sockington_from_above.jpg",
         "Id": 11,
         "Category": "cat",
         "Color": "black",
@@ -89,25 +99,28 @@
             683
         ]
     },
-    "1200px-Fat_cat_asleep.jpg": {
+    {
+        "path": "1200px-Fat_cat_asleep.jpg",
         "Id": 12,
         "Category": "cat",
-        "Color": "darkgray",
+        "Color": "rosybrown",
         "size": [
             1200,
             900
         ]
     },
-    "F._D._C._Willard.jpg": {
+    {
+        "path": "F._D._C._Willard.jpg",
         "Id": 13,
         "Category": "cat",
-        "Color": "darkolivegreen",
+        "Color": "blanchedalmond",
         "size": [
             350,
             249
         ]
     },
-    "Mr_Nuts_Executive_Portrait.jpg": {
+    {
+        "path": "Mr_Nuts_Executive_Portrait.jpg",
         "Id": 14,
         "Category": "cat",
         "Color": "black",
@@ -116,7 +129,8 @@
             403
         ]
     },
-    "Mrschippy2.png": {
+    {
+        "path": "Mrschippy2.png",
         "Id": 15,
         "Category": "cat",
         "Color": "darkslategray",
@@ -125,7 +139,8 @@
             147
         ]
     },
-    "Larry_the_Cat.jpg": {
+    {
+        "path": "Larry_the_Cat.jpg",
         "Id": 16,
         "Category": "cat",
         "Color": "dimgray",
@@ -134,7 +149,8 @@
             800
         ]
     },
-    "Celestial_spiral_with_a_twist.jpg": {
+    {
+        "path": "Celestial_spiral_with_a_twist.jpg",
         "Id": 17,
         "Category": "star",
         "Color": "maroon",
@@ -143,7 +159,8 @@
             900
         ]
     },
-    "NGC_2148_DSS.jpg": {
+    {
+        "path": "NGC_2148_DSS.jpg",
         "Id": 18,
         "Category": "star",
         "Color": "black",
@@ -152,7 +169,8 @@
             785
         ]
     },
-    "NGC6960_Veil_Nebula.jpg": {
+    {
+        "path": "NGC6960_Veil_Nebula.jpg",
         "Id": 19,
         "Category": "star",
         "Color": "black",
@@ -161,7 +179,8 @@
             793
         ]
     },
-    "1133px-Orion_Belt.jpg": {
+    {
+        "path": "1133px-Orion_Belt.jpg",
         "Id": 20,
         "Category": "star",
         "Color": "black",
@@ -170,7 +189,8 @@
             900
         ]
     },
-    "RedDwarfNASA.jpg": {
+    {
+        "path": "RedDwarfNASA.jpg",
         "Id": 21,
         "Category": "star",
         "Color": "black",
@@ -179,7 +199,8 @@
             899
         ]
     },
-    "Ngc6578.jpg": {
+    {
+        "path": "Ngc6578.jpg",
         "Id": 22,
         "Category": "star",
         "Color": "black",
@@ -188,7 +209,8 @@
             491
         ]
     },
-    "1200px-Honda_Civic_typeR.jpg": {
+    {
+        "path": "1200px-Honda_Civic_typeR.jpg",
         "Id": 23,
         "Category": "car",
         "Color": "dimgray",
@@ -197,7 +219,8 @@
             798
         ]
     },
-    "1962-ferrari-archives.jpg": {
+    {
+        "path": "1962-ferrari-archives.jpg",
         "Id": 24,
         "Category": "car",
         "Color": "black",
@@ -206,16 +229,18 @@
             720
         ]
     },
-    "1200px-Ferrari_250_California_Spyder_SWB.jpg": {
+    {
+        "path": "1200px-Ferrari_250_California_Spyder_SWB.jpg",
         "Id": 25,
         "Category": "car",
-        "Color": "rosybrown",
+        "Color": "gray",
         "size": [
             1200,
             800
         ]
     },
-    "1200px-Laffly_V15_Saumur_01.jpg": {
+    {
+        "path": "1200px-Laffly_V15_Saumur_01.jpg",
         "Id": 26,
         "Category": "car",
         "Color": "darkslategray",
@@ -224,7 +249,8 @@
             900
         ]
     },
-    "1954_Ferrari_375_Plus_34.jpg": {
+    {
+        "path": "1954_Ferrari_375_Plus_34.jpg",
         "Id": 27,
         "Category": "car",
         "Color": "firebrick",
@@ -233,7 +259,8 @@
             610
         ]
     },
-    "Compigne_(60)_muse_de_la_Voiture_Break_automobile_Delahaye_1897_1.jpg": {
+    {
+        "path": "Compigne_(60)_muse_de_la_Voiture_Break_automobile_Delahaye_1897_1.jpg",
         "Id": 28,
         "Category": "car",
         "Color": "rosybrown",
@@ -242,7 +269,8 @@
             900
         ]
     },
-    "1200px-Audi_e-tron_(Edit1).jpg": {
+    {
+        "path": "1200px-Audi_e-tron_(Edit1).jpg",
         "Id": 29,
         "Category": "car",
         "Color": "black",
@@ -251,7 +279,8 @@
             800
         ]
     },
-    "1200px-1972alfaromeo1300gtfront.jpg": {
+    {
+        "path": "1200px-1972alfaromeo1300gtfront.jpg",
         "Id": 30,
         "Category": "car",
         "Color": "black",
@@ -260,7 +289,8 @@
             684
         ]
     },
-    "car1.jpg": {
+    {
+        "path": "car1.jpg",
         "Id": 31,
         "Category": "car",
         "Color": "black",
@@ -269,7 +299,8 @@
             644
         ]
     },
-    "1200px-Ferrari_250_Europa.jpg": {
+    {
+        "path": "1200px-Ferrari_250_Europa.jpg",
         "Id": 32,
         "Category": "car",
         "Color": "darkslategray",
@@ -278,7 +309,8 @@
             750
         ]
     },
-    "Paris_-_Salon_de_la_moto_2011_-_Aprilia_-_SRV_850_-_001.jpg": {
+    {
+        "path": "Paris_-_Salon_de_la_moto_2011_-_Aprilia_-_SRV_850_-_001.jpg",
         "Id": 35,
         "Category": "motorbike",
         "Color": "darkslategray",
@@ -287,7 +319,8 @@
             800
         ]
     },
-    "1200px-Kawasaki_Vulcan_1500_(2000).jpg": {
+    {
+        "path": "1200px-Kawasaki_Vulcan_1500_(2000).jpg",
         "Id": 37,
         "Category": "motorbike",
         "Color": "darkgray",
@@ -296,7 +329,8 @@
             900
         ]
     },
-    "Malanca_125_white.jpg": {
+    {
+        "path": "Malanca_125_white.jpg",
         "Id": 38,
         "Category": "motorbike",
         "Color": "black",
@@ -305,7 +339,8 @@
             343
         ]
     },
-    "KTM_MotoGP_Bike_RC16.jpg": {
+    {
+        "path": "KTM_MotoGP_Bike_RC16.jpg",
         "Id": 40,
         "Category": "motorbike",
         "Color": "darkslategray",
@@ -314,7 +349,8 @@
             803
         ]
     },
-    "Aprilia_Tuono_1000R_black.jpg": {
+    {
+        "path": "Aprilia_Tuono_1000R_black.jpg",
         "Id": 41,
         "Category": "motorbike",
         "Color": "lavender",
@@ -323,7 +359,8 @@
             800
         ]
     },
-    "1199px-Ogar_4_(1939).jpg": {
+    {
+        "path": "1199px-Ogar_4_(1939).jpg",
         "Id": 42,
         "Category": "motorbike",
         "Color": "gainsboro",
@@ -332,7 +369,8 @@
             899
         ]
     },
-    "ConcordGrapes.jpg": {
+    {
+        "path": "ConcordGrapes.jpg",
         "Id": 43,
         "Category": "fruit",
         "Color": "olive",
@@ -341,7 +379,8 @@
             705
         ]
     },
-    "1200px-Melons_du_Quercy_sur_un_march.jpg": {
+    {
+        "path": "1200px-Melons_du_Quercy_sur_un_march.jpg",
         "Id": 44,
         "Category": "fruit",
         "Color": "gray",
@@ -350,7 +389,8 @@
             900
         ]
     },
-    "1200px-Rode_bessen_(Ribes_rubrum).jpg": {
+    {
+        "path": "1200px-Rode_bessen_(Ribes_rubrum).jpg",
         "Id": 46,
         "Category": "fruit",
         "Color": "dimgray",
@@ -359,7 +399,8 @@
             852
         ]
     },
-    "1200px-Pyrus_pyrifolia.jpg": {
+    {
+        "path": "1200px-Pyrus_pyrifolia.jpg",
         "Id": 47,
         "Category": "fruit",
         "Color": "white",
@@ -368,7 +409,8 @@
             579
         ]
     },
-    "Garcinia_mangostana.jpg": {
+    {
+        "path": "Garcinia_mangostana.jpg",
         "Id": 48,
         "Category": "fruit",
         "Color": "aliceblue",
@@ -377,7 +419,8 @@
             1944
         ]
     },
-    "1200px-Litchi_chinensis_on_black_background.png": {
+    {
+        "path": "1200px-Litchi_chinensis_on_black_background.png",
         "Id": 49,
         "Category": "fruit",
         "Color": "black",
@@ -386,7 +429,8 @@
             900
         ]
     },
-    "Badea.jpg": {
+    {
+        "path": "Badea.jpg",
         "Id": 50,
         "Category": "fruit",
         "Color": "darkgray",
@@ -395,7 +439,8 @@
             900
         ]
     },
-    "Whole_melon.jpg": {
+    {
+        "path": "Whole_melon.jpg",
         "Id": 51,
         "Category": "fruit",
         "Color": "darkslategray",
@@ -404,16 +449,18 @@
             900
         ]
     },
-    "1200px-Purple_mangosteen.jpg": {
+    {
+        "path": "1200px-Purple_mangosteen.jpg",
         "Id": 52,
         "Category": "fruit",
-        "Color": "white",
+        "Color": "snow",
         "size": [
             1200,
             637
         ]
     },
-    "1200px-Nephelium_lappaceum201907mx.jpg": {
+    {
+        "path": "1200px-Nephelium_lappaceum201907mx.jpg",
         "Id": 53,
         "Category": "fruit",
         "Color": "gainsboro",
@@ -422,7 +469,8 @@
             856
         ]
     },
-    "1199px-Pomelo_fruit.jpg": {
+    {
+        "path": "1199px-Pomelo_fruit.jpg",
         "Id": 54,
         "Category": "fruit",
         "Color": "dimgray",
@@ -431,7 +479,8 @@
             899
         ]
     },
-    "Star_the_Dog.jpg": {
+    {
+        "path": "Star_the_Dog.jpg",
         "Id": 55,
         "Category": "dog",
         "Color": "darkolivegreen",
@@ -440,7 +489,8 @@
             899
         ]
     },
-    "Rex_Cavalier_King_Charles_Spaniel.jpg": {
+    {
+        "path": "Rex_Cavalier_King_Charles_Spaniel.jpg",
         "Id": 56,
         "Category": "dog",
         "Color": "rosybrown",
@@ -449,7 +499,8 @@
             417
         ]
     },
-    "Wasao.jpg": {
+    {
+        "path": "Wasao.jpg",
         "Id": 57,
         "Category": "dog",
         "Color": "gainsboro",
@@ -458,7 +509,8 @@
             900
         ]
     },
-    "Dylan_(perro).jpg": {
+    {
+        "path": "Dylan_(perro).jpg",
         "Id": 58,
         "Category": "dog",
         "Color": "dimgray",
@@ -467,7 +519,8 @@
             380
         ]
     },
-    "Sergeant_Stubby.jpg": {
+    {
+        "path": "Sergeant_Stubby.jpg",
         "Id": 60,
         "Category": "dog",
         "Color": "gray",
@@ -476,7 +529,8 @@
             480
         ]
     },
-    "Shibainu_Maru.jpg": {
+    {
+        "path": "Shibainu_Maru.jpg",
         "Id": 61,
         "Category": "dog",
         "Color": "lightskyblue",
@@ -485,7 +539,8 @@
             800
         ]
     },
-    "Ulex_europaeus3.jpg": {
+    {
+        "path": "Ulex_europaeus3.jpg",
         "Id": 62,
         "Category": "flower",
         "Color": "darkolivegreen",
@@ -494,4 +549,4 @@
             480
         ]
     }
-}
+]
