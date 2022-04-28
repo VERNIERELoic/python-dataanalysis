@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+
+  acquisition:
+    image: ubuntu:latest
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./code/acquisition/acquisition.py:/home/code/acquisition/acquisition.py
+  
+  analysis:
+    image: ubuntu:latest
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+       - ./code/analysis/analysis.py:/home/code/analysis/analysis.py
+  
+  recommendation:
+    image: ubuntu:latest
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./code/recommendation/recommendation.py:/home/code/recommendation/recommendation.py
+
+  bdd:
+    image: alpine:latest
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./images:/home/images
+   
+volumes:
+  images-data:
+  code-data:
