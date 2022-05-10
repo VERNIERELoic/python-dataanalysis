@@ -1,34 +1,48 @@
 version: '3.7'
 services:
 
-  acquisition:
-    image: ubuntu:latest
+  download:
+    image: python:3.7-alpine
     restart: unless-stopped
     network_mode: host
+    work_dir: images-data/home/images
     volumes:
+      - requirement-data:/usr/local/lib/python3.7/site-package
+      - images-data:/home/images
       - ./code/acquisition/acquisition.py:/home/code/acquisition/acquisition.py
-  
-  analysis:
-    image: ubuntu:latest
+    command: pip install -r requirement.txt
+
+  acquisition:
+    image: python:3.7-alpine
     restart: unless-stopped
     network_mode: host
     volumes:
+      - requirement-data:/usr/local/lib/python3.7/site-package
+      - ./code/acquisition/acquisition.py:/home/code/acquisition/acquisition.py
+  depends_on:
+      - download
+      
+  analysis:
+    image: python:3.7-alpine
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+       - requirement-data:/usr/local/lib/python3.7/site-package
        - ./code/analysis/analysis.py:/home/code/analysis/analysis.py
+    depends_on:
+      - acquisition
   
   recommendation:
-    image: ubuntu:latest
+    image: python:3.7-alpine
     restart: unless-stopped
     network_mode: host
     volumes:
+      - requirement-data:/usr/local/lib/python3.7/site-package
       - ./code/recommendation/recommendation.py:/home/code/recommendation/recommendation.py
-
-  bdd:
-    image: alpine:latest
-    restart: unless-stopped
-    network_mode: host
-    volumes:
-      - ./images:/home/images
+    depends_on:
+      - analysis
    
 volumes:
   images-data:
   code-data:
+  requirement-data:

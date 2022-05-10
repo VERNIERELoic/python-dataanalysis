@@ -21,12 +21,6 @@ from webcolors import (
     name_to_rgb,
 )
 
-username = "verniereloic"
-key = "03e78f24e94d43d80b595934fc372ecf"
-
-od.download("https://www.kaggle.com/ayklovettc/images-with-exif")
-
-
 def hex_to_rgb(value):
     value = value.lstrip('#')
     lv = len(value)
@@ -61,7 +55,7 @@ def find_color(NUM_CLUSTERS):
             cpt = cpt + 1
             if image.endswith((".jpg",".png")):
                 img = Image.open(path + folder + "/" + image)
-                #img = img.resize((150, 150)).convert("RGB") #To converte all image to RGB image
+                #img = img.resize((150, 150)).convert("RGB") #To converte all image to RGB image and resize to 150*150
                 img = img.convert("RGB")
                 ar = np.asarray(img)
                 shape = ar.shape

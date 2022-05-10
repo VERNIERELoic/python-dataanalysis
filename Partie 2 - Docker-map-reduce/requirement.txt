@@ -1,0 +1,9 @@
+opendatasets
+Pillow
+numpy 
+scipy 
+matplotlib 
+pandas 
+scikit-learn
+webcolors
+
