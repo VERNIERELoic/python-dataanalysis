@@ -1,9 +1,10 @@
 opendatasets
 Pillow
-numpy 
-scipy 
+numpy
+scipy
 matplotlib 
-pandas 
+pandas
 scikit-learn
 webcolors
-
+multiprocess
+nats-py

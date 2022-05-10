@@ -3,46 +3,58 @@ services:
 
   download:
     image: python:3.7-alpine
+    container_name: tdm_download
     restart: unless-stopped
-    network_mode: host
-    work_dir: images-data/home/images
+    working_dir: /project
     volumes:
       - requirement-data:/usr/local/lib/python3.7/site-package
       - images-data:/home/images
-      - ./code/acquisition/acquisition.py:/home/code/acquisition/acquisition.py
+      - .:/project
     command: pip install -r requirement.txt
+    entrypoint: python3 download.py
 
   acquisition:
     image: python:3.7-alpine
+    container_name: tdm_acquisition
     restart: unless-stopped
+    working_dir: /project
     network_mode: host
     volumes:
       - requirement-data:/usr/local/lib/python3.7/site-package
-      - ./code/acquisition/acquisition.py:/home/code/acquisition/acquisition.py
-  depends_on:
+      - images-data:/home/images
+      - .:/project
+    entrypoint: python3 acquisition.py
+    depends_on:
       - download
       
   analysis:
     image: python:3.7-alpine
+    container_name: tdm_analysis
     restart: unless-stopped
+    working_dir: /project
     network_mode: host
     volumes:
        - requirement-data:/usr/local/lib/python3.7/site-package
-       - ./code/analysis/analysis.py:/home/code/analysis/analysis.py
+       - images-data:/home/images
+       - .:/project
+    entrypoint: python3 analysis.py
     depends_on:
       - acquisition
-  
+
   recommendation:
     image: python:3.7-alpine
+    container_name: tdm_recommandation
     restart: unless-stopped
+    working_dir: /project
     network_mode: host
     volumes:
       - requirement-data:/usr/local/lib/python3.7/site-package
-      - ./code/recommendation/recommendation.py:/home/code/recommendation/recommendation.py
+      - images-data:/home/images
+      - .:/project
+    entrypoint: python3 recommendation.py
     depends_on:
       - analysis
    
 volumes:
   images-data:
-  code-data:
   requirement-data:
