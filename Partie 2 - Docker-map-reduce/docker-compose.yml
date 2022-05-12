@@ -2,56 +2,43 @@ version: '3.7'
 services:
 
   download:
-    image: python:3.7-alpine
     container_name: tdm_download
+    build: Dockerfile_donwload
     restart: unless-stopped
-    working_dir: /project
+    network_mode: host
     volumes:
-      - requirement-data:/usr/local/lib/python3.7/site-package
       - images-data:/home/images
-      - .:/project
-    command: pip install -r requirement.txt
-    entrypoint: python3 download.py
 
   acquisition:
-    image: python:3.7-alpine
     container_name: tdm_acquisition
+    build: Dockerfile_acquisition
     restart: unless-stopped
     working_dir: /project
     network_mode: host
     volumes:
-      - requirement-data:/usr/local/lib/python3.7/site-package
       - images-data:/home/images
-      - .:/project
-    entrypoint: python3 acquisition.py
     depends_on:
       - download
       
   analysis:
-    image: python:3.7-alpine
     container_name: tdm_analysis
+    build: Dockerfile_analysis
     restart: unless-stopped
     working_dir: /project
     network_mode: host
     volumes:
-       - requirement-data:/usr/local/lib/python3.7/site-package
-       - images-data:/home/images
-       - .:/project
-    entrypoint: python3 analysis.py
+        - images-data:/home/images
     depends_on:
       - acquisition
 
   recommendation:
-    image: python:3.7-alpine
     container_name: tdm_recommandation
+    build: Dockerfile_recommendation
     restart: unless-stopped
     working_dir: /project
     network_mode: host
     volumes:
-      - requirement-data:/usr/local/lib/python3.7/site-package
       - images-data:/home/images
-      - .:/project
-    entrypoint: python3 recommendation.py
     depends_on:
       - analysis
    
