@@ -1,13 +1,10 @@
-FROM python:3.7-alpine
+FROM python:3.7
 
 WORKDIR /projet
 
-COPY requirements.txt /
-ADD recommendation.py /
-RUN apk update && apk add python3-dev \ 
-                               gcc \
-                               libc-dev
-RUN pip install --upgrade pip 
+COPY requirements.txt .
+ADD recommendation.py .
+
 RUN pip install -r requirements.txt
 
 CMD [ "python", "./recommendation.py" ]

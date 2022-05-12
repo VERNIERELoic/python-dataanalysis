@@ -3,45 +3,60 @@ services:
 
   download:
     container_name: tdm_download
-    build: Dockerfile_donwload
+    build:
+      context: .
+      dockerfile: Dockerfile_donwload
     restart: unless-stopped
-    network_mode: host
     volumes:
       - images-data:/home/images
+    networks: 
+      - net_common
 
   acquisition:
     container_name: tdm_acquisition
-    build: Dockerfile_acquisition
+    build:
+      context: ./
+      dockerfile: Dockerfile_acquisition
     restart: unless-stopped
     working_dir: /project
-    network_mode: host
     volumes:
       - images-data:/home/images
+    networks: 
+      - net_common
     depends_on:
       - download
       
   analysis:
     container_name: tdm_analysis
-    build: Dockerfile_analysis
+    build:
+      context: ./
+      dockerfile: Dockerfile_analysis
     restart: unless-stopped
     working_dir: /project
-    network_mode: host
     volumes:
         - images-data:/home/images
+    networks: 
+      - net_common
     depends_on:
       - acquisition
 
   recommendation:
     container_name: tdm_recommandation
-    build: Dockerfile_recommendation
+    build:
+      context: ./
+      dockerfile: Dockerfile_recommendation
     restart: unless-stopped
     working_dir: /project
-    network_mode: host
     volumes:
       - images-data:/home/images
+    networks: 
+      - net_common
     depends_on:
       - analysis
    
 volumes:
   images-data:
   requirement-data:
+
+networks:
+  net_common : {}
