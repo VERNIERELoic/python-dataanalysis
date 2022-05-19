@@ -6,36 +6,40 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_donwload
+    environment:
+      - KAGGLE_USERNAME=verniereloic
+      - KAGGLE_KEY=03e78f24e94d43d80b595934fc372ecf
     restart: unless-stopped
     volumes:
-      - images-data:/home/images
-    networks: 
+      - images-data:/images
+      - shared-data:/share
+    networks:
       - net_common
 
   acquisition:
     container_name: tdm_acquisition
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile_acquisition
     restart: unless-stopped
-    working_dir: /project
     volumes:
-      - images-data:/home/images
-    networks: 
+      - images-data:/images
+      - shared-data:/share
+    networks:
       - net_common
     depends_on:
       - download
-      
+
   analysis:
     container_name: tdm_analysis
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile_analysis
     restart: unless-stopped
-    working_dir: /project
     volumes:
-        - images-data:/home/images
-    networks: 
+      - images-data:/images
+      - shared-data:/share
+    networks:
       - net_common
     depends_on:
       - acquisition
@@ -43,20 +47,30 @@ services:
   recommendation:
     container_name: tdm_recommandation
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile_recommendation
     restart: unless-stopped
-    working_dir: /project
     volumes:
-      - images-data:/home/images
-    networks: 
+      - images-data:/images
+      - shared-data:/share
+    networks:
       - net_common
     depends_on:
       - analysis
-   
+
+  rabbitmq:
+    container_name: tdm_rabbitmq
+    image: rabbitmq
+    restart: unless-stopped
+    networks:
+      - net_common
+    depends_on:
+      - download
+
 volumes:
   images-data:
-  requirement-data:
+  shared-data:
+
 
 networks:
-  net_common : {}
+  net_common: {}

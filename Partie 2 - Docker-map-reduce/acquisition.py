@@ -1,4 +1,3 @@
-import opendatasets as od
 import os
 import PIL.Image
 from PIL import Image
@@ -43,7 +42,7 @@ def convert_rgb_to_names(rgb_tuple):
 
 def find_color(NUM_CLUSTERS):
 
-    path = "Images/"
+    path = "/"
     folders = os.listdir("Images")
     categories = []
     data = []
@@ -78,7 +77,7 @@ def find_color(NUM_CLUSTERS):
 
                 data.append(el)
     
-    with open('json_data.json', 'w+') as outfile:
+    with open('/share/json_data.json', 'w+') as outfile:
         outfile.write(json.dumps(data, indent=4))
         #outfile.write(",")
         outfile.close()
