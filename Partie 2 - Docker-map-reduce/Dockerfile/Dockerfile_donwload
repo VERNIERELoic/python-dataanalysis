@@ -2,8 +2,8 @@ FROM python:3.7
 
 WORKDIR /
 
-COPY requirements.txt .
-ADD download.py .
+COPY ./requirements.txt .
+ADD src/download.py .
 
 RUN pip install -r requirements.txt
 

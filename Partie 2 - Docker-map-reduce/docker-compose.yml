@@ -5,7 +5,7 @@ services:
     container_name: tdm_download
     build:
       context: .
-      dockerfile: Dockerfile_donwload
+      dockerfile: Dockerfile/Dockerfile_donwload
     environment:
       - KAGGLE_USERNAME=verniereloic
       - KAGGLE_KEY=03e78f24e94d43d80b595934fc372ecf
@@ -20,7 +20,7 @@ services:
     container_name: tdm_acquisition
     build:
       context: .
-      dockerfile: Dockerfile_acquisition
+      dockerfile: Dockerfile/Dockerfile_acquisition
     restart: unless-stopped
     volumes:
       - images-data:/images
@@ -34,7 +34,7 @@ services:
     container_name: tdm_analysis
     build:
       context: .
-      dockerfile: Dockerfile_analysis
+      dockerfile: Dockerfile/Dockerfile_analysis
     restart: unless-stopped
     volumes:
       - images-data:/images
@@ -48,7 +48,7 @@ services:
     container_name: tdm_recommandation
     build:
       context: .
-      dockerfile: Dockerfile_recommendation
+      dockerfile: Dockerfile/Dockerfile_recommendation
     restart: unless-stopped
     volumes:
       - images-data:/images
