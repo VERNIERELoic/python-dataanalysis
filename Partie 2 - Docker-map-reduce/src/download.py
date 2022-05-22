@@ -1,18 +1,51 @@
 # import opendatasets as od
 import os
-# os.environ['KAGGLE_USERNAME'] = 'verniereloic'
-# os.environ['KAGGLE_KEY'] = '03e78f24e94d43d80b595934fc372ecf'
+import time
+import pika
 from kaggle.api.kaggle_api_extended import KaggleApi
 
-dataset = 'ayklovettc/images-with-exif'
-path = './'
 
-api = KaggleApi()
-api.authenticate()
+def download():
+    dataset = 'ayklovettc/images-with-exif'
+    path = '/share'
 
-api.dataset_download_files(dataset, path,  unzip=True)
+    api = KaggleApi()
+    api.authenticate()
+    api.dataset_download_files(dataset, path,  unzip=True)
+    time.sleep(5)
 
-# username = "verniereloic"
-# key = "03e78f24e94d43d80b595934fc372ecf"
 
-# od.download("https://www.kaggle.com/ayklovettc/images-with-exif")
+
+def init_connection():
+    connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host='rabbitmq'))
+
+    channel = connection.channel()
+    channel.queue_declare(queue='download_completed')
+    return channel, connection
+
+def start(channel, connection):
+
+    channel.basic_publish(exchange='', routing_key='download_completed',
+                          body='<--download completed | start acquisition-->')
+
+    print(" [x] Sent : <--download completed | start acquisition-->")
+    connection.close()
+
+
+def main():
+    print("Waiting for rabbitmq server start ...")
+    time.sleep(7)
+    result = init_connection()
+    download()
+    print("Waiting for download completed...")
+    while not os.path.exists("/share/Images/star"):
+        time.sleep(1)
+        print("waiting in loop...")
+    print("download completed !")
+    start(result[0], result[1])
+    time.sleep(10000)
+
+
+if __name__ == "__main__":
+    main()

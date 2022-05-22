@@ -5,8 +5,7 @@ matplotlib
 pandas
 scikit-learn
 webcolors
-multiprocess
-nats-py
 kaggle
+pika
 
 

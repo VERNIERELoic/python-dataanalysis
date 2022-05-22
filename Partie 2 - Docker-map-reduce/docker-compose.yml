@@ -9,68 +9,70 @@ services:
     environment:
       - KAGGLE_USERNAME=verniereloic
       - KAGGLE_KEY=03e78f24e94d43d80b595934fc372ecf
-    restart: unless-stopped
+    restart: on-failure
     volumes:
-      - images-data:/images
-      - shared-data:/share
+      - images-data:/share
     networks:
       - net_common
+    depends_on:
+      - rabbitmq
 
   acquisition:
     container_name: tdm_acquisition
     build:
       context: .
       dockerfile: Dockerfile/Dockerfile_acquisition
-    restart: unless-stopped
+    restart: on-failure
     volumes:
-      - images-data:/images
-      - shared-data:/share
+      - images-data:/share
     networks:
       - net_common
     depends_on:
-      - download
+      - rabbitmq
 
-  analysis:
-    container_name: tdm_analysis
-    build:
-      context: .
-      dockerfile: Dockerfile/Dockerfile_analysis
-    restart: unless-stopped
-    volumes:
-      - images-data:/images
-      - shared-data:/share
-    networks:
-      - net_common
-    depends_on:
-      - acquisition
+  # analysis:
+  #   container_name: tdm_analysis
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile/Dockerfile_analysis
+  #   restart: unless-stopped
+  #   volumes:
+  #     - images-data:/share
+  #   networks:
+  #     - net_common
+  #   depends_on:
+  #     - rabbitmq
 
-  recommendation:
-    container_name: tdm_recommandation
-    build:
-      context: .
-      dockerfile: Dockerfile/Dockerfile_recommendation
-    restart: unless-stopped
-    volumes:
-      - images-data:/images
-      - shared-data:/share
-    networks:
-      - net_common
-    depends_on:
-      - analysis
+  # recommendation:
+  #   container_name: tdm_recommandation
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile/Dockerfile_recommendation
+  #   restart: unless-stopped
+  #   volumes:
+  #     - images-data:/share
+  #   networks:
+  #     - net_common
+  #   depends_on:
+  #     - rabbitmq
 
   rabbitmq:
-    container_name: tdm_rabbitmq
-    image: rabbitmq
-    restart: unless-stopped
+    image: 'rabbitmq:3.6-management-alpine'
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:15672"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
     networks:
       - net_common
-    depends_on:
-      - download
 
 volumes:
   images-data:
-  shared-data:
-
 
 networks:
-  net_common: {}
+  net_common:
+    external:
+      name: net_common

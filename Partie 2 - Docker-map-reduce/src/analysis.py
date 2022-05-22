@@ -1,4 +1,5 @@
 import numpy as np
+import time
 from matplotlib import pyplot as plt
 from webcolors import (
     CSS3_HEX_TO_NAMES,
@@ -28,5 +29,5 @@ def analysedata(filename):
     plt.ylabel('Quantity')
     plt.xlabel('Color')
 
-
+time.sleep(10)
 analysedata('json_data.json')

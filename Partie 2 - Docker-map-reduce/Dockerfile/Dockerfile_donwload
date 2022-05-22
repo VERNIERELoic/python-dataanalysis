@@ -7,5 +7,6 @@ ADD src/download.py .
 
 RUN pip install -r requirements.txt
 
-CMD [ "python", "./download.py" ]
+CMD [ "python", "-u", "./download.py" ]
+
 

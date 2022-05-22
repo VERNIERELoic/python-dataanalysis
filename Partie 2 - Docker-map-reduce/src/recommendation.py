@@ -1,4 +1,5 @@
 from sklearn import tree
+import time
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 import json
@@ -56,5 +57,5 @@ def prediction(filename):
     print(le3.inverse_transform(prediction))
     print(dtc.feature_importances_)
 
-
+time.sleep(10)
 prediction('json_data.json')
