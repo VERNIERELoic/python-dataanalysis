@@ -11,7 +11,7 @@ services:
       - KAGGLE_KEY=03e78f24e94d43d80b595934fc372ecf
     restart: on-failure
     volumes:
-      - images-data:/share
+      - shared-data:/share
     networks:
       - net_common
     depends_on:
@@ -24,7 +24,7 @@ services:
       dockerfile: Dockerfile/Dockerfile_acquisition
     restart: on-failure
     volumes:
-      - images-data:/share
+      - shared-data:/share
     networks:
       - net_common
     depends_on:
@@ -37,7 +37,7 @@ services:
       dockerfile: Dockerfile/Dockerfile_analysis
     restart: on-failure
     volumes:
-      - images-data:/share
+      - shared-data:/share
     networks:
       - net_common
     depends_on:
@@ -50,7 +50,7 @@ services:
       dockerfile: Dockerfile/Dockerfile_recommendation
     restart: on-failure
     volumes:
-      - images-data:/share
+      - shared-data:/share
     networks:
       - net_common
     depends_on:
@@ -84,7 +84,7 @@ services:
       - rabbitmq
 
 volumes:
-  images-data:
+  shared-data:
 
 networks:
   net_common:

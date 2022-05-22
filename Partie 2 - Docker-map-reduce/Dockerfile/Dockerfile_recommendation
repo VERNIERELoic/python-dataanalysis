@@ -7,6 +7,5 @@ ADD src/recommendation.py .
 
 RUN pip install -r requirements.txt
 
-CMD [ "python", "./recommendation.py" ]
-CMD tail -f /dev/null
+CMD [ "python", "-u", "./recommendation.py" ]
 
