@@ -3,10 +3,12 @@ import time
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 import json
+import pika
 
 
-def prediction(filename):
+def prediction(a,b,c,d):
     data = []
+    filename = "json_data.json"
     with open(filename) as f:
         datajs = json.load(f)
         for index in range(0, 26, 2):
@@ -57,5 +59,35 @@ def prediction(filename):
     print(le3.inverse_transform(prediction))
     print(dtc.feature_importances_)
 
-time.sleep(10)
-prediction('json_data.json')
+
+
+def init_connection(QUEUE):
+    connection = pika.BlockingConnection(
+        pika.ConnectionParameters(host='rabbitmq'))
+
+    channel = connection.channel()
+    channel.queue_declare(queue=QUEUE)
+    return channel, connection
+
+
+def listen(channel, connection, QUEUE):
+    channel.basic_consume(queue=QUEUE,
+                          auto_ack=True,
+                          on_message_callback=prediction)
+
+    channel.queue_declare(queue=QUEUE)
+    print("Waiting for a signal ...")
+    channel.start_consuming()
+
+
+def main():
+    print("Waiting for rabbitmq server start ...")
+    time.sleep(7)
+    global result
+    print("Init new connection ...")
+    result = init_connection('analysis_completed')
+    listen(result[0], result[1],'analysis_completed')
+
+
+if __name__ == '__main__':
+    main()

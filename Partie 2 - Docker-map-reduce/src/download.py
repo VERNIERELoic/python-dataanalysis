@@ -15,16 +15,16 @@ def download():
     time.sleep(5)
 
 
-
-def init_connection():
+def init_connection(QUEUE):
     connection = pika.BlockingConnection(
-    pika.ConnectionParameters(host='rabbitmq'))
+        pika.ConnectionParameters(host='rabbitmq'))
 
     channel = connection.channel()
-    channel.queue_declare(queue='download_completed')
+    channel.queue_declare(queue=QUEUE)
     return channel, connection
 
-def start(channel, connection):
+
+def send_signal(channel, connection):
 
     channel.basic_publish(exchange='', routing_key='download_completed',
                           body='<--download completed | start acquisition-->')
@@ -36,14 +36,14 @@ def start(channel, connection):
 def main():
     print("Waiting for rabbitmq server start ...")
     time.sleep(7)
-    result = init_connection()
+    result = init_connection('download_completed')
     download()
     print("Waiting for download completed...")
     while not os.path.exists("/share/Images/star"):
         time.sleep(1)
         print("waiting in loop...")
     print("download completed !")
-    start(result[0], result[1])
+    send_signal(result[0], result[1])
     time.sleep(10000)
 
 

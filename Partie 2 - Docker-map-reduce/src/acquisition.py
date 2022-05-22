@@ -22,6 +22,8 @@ from webcolors import (
     name_to_rgb,
 )
 
+result = 0
+connection = 0
 
 def hex_to_rgb(value):
     value = value.lstrip('#')
@@ -58,7 +60,8 @@ def find_color(a, b, c, d):
             cpt = cpt + 1
             if image.endswith((".jpg", ".png")):
                 img = Image.open(path + folder + "/" + image)
-                img = img.resize((150, 150)).convert("RGB") #To converte all image to RGB image and resize to 150*150
+                # To converte all image to RGB image and resize to 150*150
+                img = img.resize((150, 150)).convert("RGB")
                 img = img.convert("RGB")
                 ar = np.asarray(img)
                 shape = ar.shape
@@ -83,25 +86,42 @@ def find_color(a, b, c, d):
                 }
 
                 data.append(el)
-    
+
     print("Saving in jsons...")
     with open('/share/json_data.json', 'w+') as outfile:
         outfile.write(json.dumps(data, indent=4))
         # outfile.write(",")
         outfile.close()
+    
+    send_signal(result[0], result[1])
 
 
-def start():
 
-    connection_params = pika.ConnectionParameters(
-        host='rabbitmq', socket_timeout=5)
-    connection = pika.BlockingConnection(connection_params)
+def init_connection(QUEUE):
+    global connection
+    connection = pika.BlockingConnection(
+        pika.ConnectionParameters(host='rabbitmq'))
+
     channel = connection.channel()
-    channel.basic_consume(queue='download_completed',
+    channel.queue_declare(queue=QUEUE)
+    return channel, connection
+
+
+def send_signal(channel, connection):
+
+    channel.basic_publish(exchange='', routing_key='acquisition_completed',
+                          body='<--acquisition completed | start analysis-->')
+
+    print(" [x] Sent : <--acquisition completed | start analysis-->")
+    connection.close()
+
+
+def listen(channel, connection, QUEUE):
+    channel.basic_consume(queue=QUEUE,
                           auto_ack=True,
                           on_message_callback=find_color)
 
-    channel.queue_declare(queue='download_completed')
+    channel.queue_declare(queue=QUEUE)
     print("Waiting for a signal ...")
     channel.start_consuming()
 
@@ -109,9 +129,15 @@ def start():
 def main():
     print("Waiting for rabbitmq server start ...")
     time.sleep(7)
-    start()
-    time.sleep(10000)
+    global result
+    print("Init new connection ...")
+    result = init_connection('download_completed')
+    listen(result[0], result[1],'download_completed')
+    print("Init new connection ...")
+    result = init_connection('acquisition_completed')
+    send_signal(result[0], result[1])
 
+    time.sleep(1000)
 
 if __name__ == '__main__':
     main()
