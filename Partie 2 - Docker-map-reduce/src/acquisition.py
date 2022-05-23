@@ -110,9 +110,9 @@ def init_connection(QUEUE):
 def send_signal(channel, connection):
 
     channel.basic_publish(exchange='', routing_key='acquisition_completed',
-                          body='<--acquisition completed | start analysis-->')
+                          body='<--acquisition completed | start recommendation-->')
 
-    print(" [x] Sent : <--acquisition completed | start analysis-->")
+    print(" [x] Sent : <--acquisition completed | start recommendation-->")
     connection.close()
 
 
@@ -130,11 +130,12 @@ def main():
     print("Waiting for rabbitmq server start ...")
     time.sleep(7)
     global result
-    print("Init new connection ...")
+    print("Init new connection to received message...")
     result = init_connection('download_completed')
     listen(result[0], result[1],'download_completed')
-    print("Init new connection ...")
+    print("Init new connection for sending message...")
     result = init_connection('acquisition_completed')
+    print("connection ok")
     send_signal(result[0], result[1])
 
     time.sleep(1000)

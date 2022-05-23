@@ -8,8 +8,8 @@ import pika
 
 def prediction(a,b,c,d):
     data = []
-    filename = "json_data.json"
-    with open(filename) as f:
+    path = "/share/json_data.json"
+    with open(path) as f:
         datajs = json.load(f)
         for index in range(0, 26, 2):
             value = datajs[index]
@@ -58,6 +58,8 @@ def prediction(a,b,c,d):
 
     print(le3.inverse_transform(prediction))
     print(dtc.feature_importances_)
+    print("prediction finihed ...")
+
 
 
 
@@ -68,6 +70,9 @@ def init_connection(QUEUE):
     channel = connection.channel()
     channel.queue_declare(queue=QUEUE)
     return channel, connection
+
+    print(" [x] Sent : <--analysis_completed -->")
+    connection.close()
 
 
 def listen(channel, connection, QUEUE):
@@ -84,9 +89,9 @@ def main():
     print("Waiting for rabbitmq server start ...")
     time.sleep(7)
     global result
-    print("Init new connection ...")
-    result = init_connection('analysis_completed')
-    listen(result[0], result[1],'analysis_completed')
+    print("Init new connection to received message...")
+    result = init_connection('acquisition_completed')
+    listen(result[0], result[1],'acquisition_completed')
 
 
 if __name__ == '__main__':

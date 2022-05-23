@@ -30,19 +30,6 @@ services:
     depends_on:
       - rabbitmq
 
-  analysis:
-    container_name: tdm_analysis
-    build:
-      context: .
-      dockerfile: Dockerfile/Dockerfile_analysis
-    restart: on-failure
-    volumes:
-      - shared-data:/share
-    networks:
-      - net_common
-    depends_on:
-      - rabbitmq
-
   recommendation:
     container_name: tdm_recommandation
     build:
@@ -75,13 +62,12 @@ services:
     image: jupyter/datascience-notebook
     ports:
       - "8888:8888"
+    volumes:
+      - ./src/:/home/jovyan
+      - shared-data:/share
     environment:
       - JUPYTER_ENABLE_LAB=yes
-    volumes:
-      - .:/
     command: start-notebook.sh --NotebookApp.token=''
-    depends_on:
-      - rabbitmq
 
 volumes:
   shared-data:
